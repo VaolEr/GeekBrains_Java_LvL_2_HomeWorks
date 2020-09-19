@@ -8,6 +8,9 @@
     <artifactId>GeekBrains_Java_LvL_2_HomeWorks</artifactId>
     <version>1.0</version>
 
-
+    <properties>
+        <maven.compiler.source>14</maven.compiler.source>
+        <maven.compiler.target>14</maven.compiler.target>
+    </properties>
 
 </project>
