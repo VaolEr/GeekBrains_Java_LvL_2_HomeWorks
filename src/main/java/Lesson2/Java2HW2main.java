@@ -23,6 +23,7 @@ public class Java2HW2main {
         String[][] tableArray3x4 = {{"0","0","0","0"},{"1","1","1","0"},{"2","2","2","0"}};
         String[][] tableArrayError = {{"0","0","0","0"},{"error","1","1","1"},{"2","2","2","2"},{"3","3","3","3"}};
         String[][] tableArray = {{"0","0","0","0"},{"1","1","1","1"},{"2","2","2","2"},{"3","3","3","3"}};
+        String[][] tableArray1 = {{"0","0","0","0"},{"1","1","1","1"},{"2","2","2"},{"3","3","3","3"}};
 
         // Add all created String[][] arrays to list
         LinkedList<String[][]> arraysList = new LinkedList<>();
@@ -31,6 +32,7 @@ public class Java2HW2main {
         arraysList.add(tableArray3x4);
         arraysList.add(tableArrayError);
         arraysList.add(tableArray);
+        arraysList.add(tableArray1);
 
 
         for (int i = 0; i < arraysList.size(); i++){
@@ -54,13 +56,23 @@ public class Java2HW2main {
         }
     }
 
+    public static boolean checkSquareArray(String[][] array, int countOfColsAndRows){
+
+        for (int i = 0; i < countOfColsAndRows; i++) {
+            if(array[i].length != countOfColsAndRows){
+                return false;
+            }
+        }
+
+        return true;
+    }
+
     public static int getSumOfTableElements(String[][] stringTable, int countOfColsAndRows) throws MyArraySizeException, MyArrayDataException {
         int resultSum = 0;
         if(stringTable[0].length != stringTable.length){
             throw new MyArraySizeException("Array dimensions are not equal (array is not square).");
-
         }
-        else if(stringTable[0].length != countOfColsAndRows){
+        else if(!checkSquareArray(stringTable, countOfColsAndRows)){
             String exceptionMessage = "2D array dimension is not " + countOfColsAndRows + "x" + countOfColsAndRows +". Correct it, please!";
             throw new MyArraySizeException(exceptionMessage);
         }
